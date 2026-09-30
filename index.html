@@ -50,8 +50,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,242,236,
 .hero-acts{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
 .hero-note{border-left:2px solid var(--aka);padding-left:14px;font-size:.84rem;color:var(--sumi2);max-width:400px}
 .vert{position:absolute;right:26px;top:70px;writing-mode:vertical-rl;font-family:var(--mincho);font-size:.95rem;letter-spacing:.4em;color:var(--hai)}
-.hero-r{position:relative;min-height:420px;background:var(--washi2)}
-.hero-r::before{content:'刃';position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mincho);font-size:7rem;color:var(--sumi);opacity:.08}
+.hero-r{position:relative;min-height:420px}
 .hero-r img{position:absolute;inset:0}
 .hero-r::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--washi) 0%,transparent 12%)}
 
@@ -167,10 +166,8 @@ h2.sec{font-family:var(--mincho);font-weight:600;font-size:clamp(1.7rem,3vw,2.4r
 
 /* ---------- SHOWROOM ---------- */
 .show-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;margin-top:44px;height:420px}
-.show-grid figure{position:relative;overflow:hidden;border-radius:2px;background:var(--washi2)}
-.show-grid figure::before{content:'刃';position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mincho);font-size:4rem;color:var(--sumi);opacity:.1}
-.show-grid img{position:relative;z-index:1}
-.show-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;background:linear-gradient(transparent,rgba(26,25,24,.62));color:var(--washi);font-size:.78rem;letter-spacing:.1em;z-index:2}
+.show-grid figure{position:relative;overflow:hidden;border-radius:2px}
+.show-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;background:linear-gradient(transparent,rgba(26,25,24,.62));color:var(--washi);font-size:.78rem;letter-spacing:.1em}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
@@ -263,8 +260,8 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
 <header class="hero">
   <div class="hero-l">
     <div class="hero-kick"><span class="hanko"><span>英</span><span>雄</span></span> Filo Academia · Ciudad de México</div>
-    <h1>Afilamos y reparamos <em>cuchillos de cocina</em>.</h1>
-    <p>Japoneses, de marca prestigiada, o ese cuchillo que heredaste y no quieres confiarle a nadie. A mano, con piedras de agua. Lo recogemos y te lo devolvemos con filo.</p>
+    <h1>Afilamos y reparamos <em>cuchillos</em></h1>
+    <p>Afilado con piedra, al estilo japonés, 100% a mano. Ya sean cuchillos de cocina, tácticos o la reliquia que no le confías a cualquiera, nosotros le damos el cuidado que se merece.</p>
     <div class="hero-acts">
       <a href="#cotizar" class="btn">Cotizar mi servicio</a>
       <a href="#precios" class="btn ghost">Ver precios</a>
@@ -273,7 +270,7 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
     <span class="vert">包丁研ぎ ・ CDMX</span>
   </div>
   <div class="hero-r">
-    <img src="images/showroom-wall.jpg" alt="Pared de cuchillos japoneses en rack magnético con iluminación cálida" onerror="this.style.display='none'">
+    <img src="https://image.qwenlm.ai/public_source/ce7d86b1-514f-48cf-899b-258edc8752d2/5fd31c8ad-c87b-4269-a9e2-fcebeed4a2ce3165.png" alt="Cuchillos damasco japoneses junto a rack magnético de nogal">
   </div>
 </header>
 
@@ -282,7 +279,6 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
   <div class="wrap">
     <div class="sec-label"><span class="jp">見積</span> Cotizador</div>
     <h2 class="sec">Cotiza tu servicio en 30 segundos.</h2>
-    <p class="sec-sub">El afilado es el servicio básico; si tu hoja tiene daños, suma la reparación que corresponda.</p>
 
     <div class="q-card">
       <div class="q-body">
@@ -291,27 +287,27 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
           <div class="q-lbl"><b>1</b> Servicio básico · incluido en toda cotización</div>
           <div class="base-svc">
             <div class="box2">✓</div>
-            <div class="tx"><b>Afilado a mano con piedras de agua</b><small>Por cuchillo, sin importar gama ni marca.</small></div>
+            <div class="tx"><b>Afilado a mano con piedras de agua</b><small>El precio puede variar al examinar el cuchillo</small></div>
             <div class="pr">$250</div>
           </div>
         </div>
 
         <div class="q-step">
           <div class="q-lbl"><b>2</b> Reparación de la hoja · se suma al afilado</div>
-          <div class="grp">Remoción de material · una sola opción, o ninguna</div>
+          <div class="grp">Remoción de material</div>
           <div class="opts" id="mmOpts">
             <button class="opt sel" data-v="0" data-n=""><div class="t">Sin reparación</div><div class="d">solo afilado</div><div class="p">—</div></button>
-            <button class="opt" data-v="290" data-n="Remoción de 1 mm"><div class="t">Remoción 1 mm</div><div class="d">reparación de la hoja</div><div class="p">+$290</div></button>
-            <button class="opt" data-v="450" data-n="Remoción de 2 mm"><div class="t">Remoción 2 mm</div><div class="d">reparación de la hoja</div><div class="p">+$450</div></button>
-            <button class="opt" data-v="550" data-n="Remoción de 3 mm"><div class="t">Remoción 3 mm</div><div class="d">reparación de la hoja</div><div class="p">+$550</div></button>
+            <button class="opt" data-v="140" data-n="Remoción de 1 mm"><div class="t">Remoción 1 mm</div><div class="d">reparación de la hoja</div><div class="p">+$140</div></button>
+            <button class="opt" data-v="300" data-n="Remoción de 2 mm"><div class="t">Remoción 2 mm</div><div class="d">reparación de la hoja</div><div class="p">+$300</div></button>
+            <button class="opt" data-v="400" data-n="Remoción de 3 mm"><div class="t">Remoción 3 mm</div><div class="d">reparación de la hoja</div><div class="p">+$400</div></button>
           </div>
           <div class="grp" style="margin-top:22px">Otros daños · combinables entre sí y con la remoción</div>
           <div class="opts three" id="extraOpts">
-            <button class="chk" data-v="300" data-n="Punta rota o doblada"><div class="box">✓</div><div class="t">Punta rota o doblada</div><div class="p">+$300</div></button>
+            <button class="chk" data-v="290" data-n="Punta rota o doblada"><div class="box">✓</div><div class="t">Punta rota o doblada</div><div class="p">+$290</div></button>
             <button class="chk" data-v="290" data-n="Mellas y muescas"><div class="box">✓</div><div class="t">Mellas y muescas</div><div class="p">+$290</div></button>
             <button class="chk" data-v="180" data-n="Óxido u oxidación"><div class="box">✓</div><div class="t">Óxido u oxidación</div><div class="p">+$180</div></button>
           </div>
-          <div class="chk-hint">Ejemplo: afilado + remoción de 2 mm + punta rota = 250 + 450 + 300 = $1,000 por cuchillo.</div>
+          <div class="chk-hint">Ejemplo: afilado + remoción de 2 mm + punta rota = 250 + 300 + 290 = $840 por cuchillo.</div>
         </div>
 
         <div class="q-step">
@@ -367,10 +363,10 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
         <h3>Servicio básico · por cuchillo</h3>
         <div class="p-row"><span>Afilado a mano con piedras de agua</span><span class="dots"></span><span class="v">$250</span></div>
         <h3 class="mt">Reparación · se suma al afilado</h3>
-        <div class="p-row"><span>Remoción de 1 mm</span><span class="dots"></span><span class="v">+$290</span></div>
-        <div class="p-row"><span>Remoción de 2 mm</span><span class="dots"></span><span class="v">+$450</span></div>
-        <div class="p-row"><span>Remoción de 3 mm</span><span class="dots"></span><span class="v">+$550</span></div>
-        <div class="p-row"><span>Punta rota o doblada</span><span class="dots"></span><span class="v">+$300</span></div>
+        <div class="p-row"><span>Remoción de 1 mm</span><span class="dots"></span><span class="v">+$140</span></div>
+        <div class="p-row"><span>Remoción de 2 mm</span><span class="dots"></span><span class="v">+$300</span></div>
+        <div class="p-row"><span>Remoción de 3 mm</span><span class="dots"></span><span class="v">+$400</span></div>
+        <div class="p-row"><span>Punta rota o doblada</span><span class="dots"></span><span class="v">+$290</span></div>
         <div class="p-row"><span>Mellas y muescas</span><span class="dots"></span><span class="v">+$290</span></div>
         <div class="p-row"><span>Óxido u oxidación</span><span class="dots"></span><span class="v">+$180</span></div>
         <p class="p-small">La remoción de material es una sola opción por cuchillo; punta, mellas y óxido son combinables entre sí y con la remoción.</p>
@@ -384,8 +380,8 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
         <div class="p-row"><span>Envíos internacionales</span><span class="dots"></span><span class="v na">No disponibles por el momento</span></div>
       </div>
     </div>
-    <p class="p-foot">Esta lista es una referencia: el precio final puede variar al examinar el cuchillo y se confirma contigo antes de cualquier trabajo. No hay descuentos por juegos completos: cada pieza se cotiza por separado. Los costos de paquetería y seguro son promedios estimados de tarifas Estafeta, DHL y Paquetexpress (paquete de 1 kg, ida y vuelta) e incluyen empaque protector y gestión.</p>
-    <p class="p-foot"><b>Condiciones del seguro:</b> la cobertura hasta $5,000 MXN opera bajo las reglas de valor declarado del transportista (Estafeta, DHL, Paquetexpress). Aplica únicamente con el empaque protector de nuestro taller; requiere reportar el daño dentro de la ventana del transportista —típicamente 5 días hábiles por daño visible y 10 a 30 días por extravío, según la paquetería— y presentar comprobante de valor de la pieza. Excluye deterioro previo, oxidación o corrosión propia del acero y daños por empaque inadecuado. La indemnización es monetaria, sobre el valor declarado, y no cubre valor sentimental. Nosotros presentamos y damos seguimiento al reclamo por ti.</p>
+    <p class="p-foot">Esta lista es una referencia: el precio final puede variar al examinar el cuchillo y se confirma antes de realizar cualquier trabajo. Cada pieza se cotiza por separado. Los costos de paquetería y seguro son promedios estimados de tarifas Estafeta, DHL y Paquetexpress (paquete de 1 kg, ida y vuelta) e incluyen el empaque de regreso y gestión.</p>
+    <p class="p-foot"><b>Condiciones del seguro:</b> la cobertura hasta $5,000 MXN opera bajo las reglas de valor declarado del transportista (Estafeta, DHL, Paquetexpress, etc). Se requiere reportar el daño directamente con el transportista y presentar comprobante de valor de la pieza. Excluye deterioro previo, oxidación o corrosión propia del acero y daños por empaque inadecuado. La indemnización es monetaria, sobre el valor declarado, y no cubre valor sentimental. Nosotros te podemos apoyar y damos seguimiento al reclamo, sin embargo la responsabilidad corre por parte de la paquetería.</p>
   </div>
 </section>
 
@@ -486,12 +482,12 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
     <p class="sec-sub">Pared imantada, luz cálida y acero listo para volver a casa.</p>
     <div class="show-grid">
       <figure>
-        <img src="images/damascus-rack.jpg" alt="Cuchillos damasco de mango de madera en rack magnético" onerror="this.style.display='none'">
-        <figcaption>Rack magnético · aceros damasco y al carbono</figcaption>
+        <img src="https://image.qwenlm.ai/public_source/ce7d86b1-514f-48cf-899b-258edc8752d2/7fd31c8ad-c87b-4269-a9e2-fcebeed4a2ce0073.png" alt="Cuchillos colgados en rack magnético de roble">
+        <figcaption>Rack magnético · pared del taller</figcaption>
       </figure>
       <figure>
-        <img src="images/whetstones.jpg" alt="Cuchillo de chef sobre piedras de agua" onerror="this.style.display='none'">
-        <figcaption>Estación de afilado · piedras de agua</figcaption>
+        <img src="https://image.qwenlm.ai/public_source/ce7d86b1-514f-48cf-899b-258edc8752d2/5fd31c8ad-c87b-4269-a9e2-fcebeed4a2ce1759.png" alt="Cuchillo japonés sobre piedra de agua">
+        <figcaption>Estación de afilado · piedra de agua</figcaption>
       </figure>
     </div>
   </div>
@@ -564,11 +560,11 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
 
 <script>
 const fmt=n=>n.toLocaleString('es-MX');
-const BASE=250;   // afilado: servicio básico, incluido siempre
+const BASE=250;
 const INS=190;
 const state={
-  mm:{v:0,n:''},          // remoción de material: una o ninguna
-  extras:[],              // punta / mellas / óxido: combinables
+  mm:{v:0,n:''},
+  extras:[],
   qty:1,
   log:{v:290,n:'Recolección y entrega a domicilio en CDMX'},
   ins:false

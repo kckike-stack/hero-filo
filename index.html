@@ -21,6 +21,11 @@ button{font-family:inherit;cursor:pointer}
 a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto}
 
+/* ---------- VISTAS ---------- */
+#view-academia{padding-top:70px}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;letter-spacing:.1em;color:var(--hai);text-decoration:none;margin-bottom:28px}
+.back-link:hover{color:var(--washi)}
+
 /* ---------- NAV ---------- */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,242,236,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-in{max-width:1180px;margin:0 auto;height:70px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
@@ -34,6 +39,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,242,236,
 .cart-btn{position:relative;display:flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);border-radius:2px;padding:9px 16px;font-size:.8rem;font-weight:500;color:var(--sumi)}
 .cart-btn:hover{border-color:var(--sumi)}
 .cart-count{background:var(--aka);color:#fff;font-size:.66rem;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 5px}
+.menu-btn{display:none;flex-direction:column;gap:4px;background:none;border:1px solid var(--line);border-radius:2px;padding:9px 10px}
+.menu-btn span{width:20px;height:1.5px;background:var(--sumi)}
+.mobile-menu{position:fixed;inset:0;background:var(--washi);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:.3s}
+.mobile-menu.on{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--mincho);font-size:1.6rem;font-weight:500;text-decoration:none;color:var(--sumi)}
+.mobile-menu a:hover{color:var(--aka)}
+.mobile-close{position:absolute;top:20px;right:24px;background:none;border:none;font-size:1.4rem;color:var(--sumi2)}
 
 /* ---------- HERO ---------- */
 .hero{margin-top:70px;display:grid;grid-template-columns:1.05fr 1fr;min-height:580px;position:relative}
@@ -154,7 +166,10 @@ h2.sec{font-family:var(--mincho);font-weight:600;font-size:clamp(1.7rem,3vw,2.4r
 .acad .sec-label::after{background:rgba(255,255,255,.15)}
 .acad h2.sec{color:var(--washi)}
 .acad .sec-sub{color:var(--hai)}
-.a-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.acad-img{position:relative;margin:40px 0 44px;height:340px;border:1px solid rgba(255,255,255,.14);border-radius:3px;overflow:hidden}
+.acad-img img{width:100%;height:100%;object-fit:cover}
+.acad-img figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 18px;background:linear-gradient(transparent,rgba(26,25,24,.75));color:var(--washi);font-size:.78rem;letter-spacing:.1em}
+.a-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:0}
 .a-card{border:1px solid rgba(255,255,255,.14);border-radius:3px;padding:30px 26px;display:flex;flex-direction:column;transition:.25s}
 .a-card:hover{border-color:var(--aka);transform:translateY(-4px)}
 .a-num{font-family:var(--mincho);color:var(--aka);font-size:.9rem;letter-spacing:.2em;margin-bottom:14px}
@@ -165,7 +180,7 @@ h2.sec{font-family:var(--mincho);font-weight:600;font-size:clamp(1.7rem,3vw,2.4r
 .a-link:hover{color:var(--aka)}
 
 /* ---------- SHOWROOM ---------- */
-.show-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;margin-top:44px;height:420px}
+.show-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:44px;height:420px}
 .show-grid figure{position:relative;overflow:hidden;border-radius:2px}
 .show-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;background:linear-gradient(transparent,rgba(26,25,24,.62));color:var(--washi);font-size:.78rem;letter-spacing:.1em}
 
@@ -221,6 +236,8 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:960px){
+  .menu-btn{display:flex}
+  .nav-r a.nl{display:none}
   .hero{grid-template-columns:1fr}
   .hero-l{padding:56px 24px}
   .hero-r{min-height:320px;order:-1}
@@ -231,8 +248,8 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
   .s-grid,.a-grid{grid-template-columns:1fr;gap:28px}
   .show-grid{grid-template-columns:1fr;height:auto}
   .show-grid figure{height:260px}
+  .acad-img{height:240px}
   .q-body,.q-bar{padding-left:20px;padding-right:20px}
-  .nav-r a.nl{display:none}
   .f-in{grid-template-columns:1fr 1fr}
   .wm{font-size:14rem}
 }
@@ -252,15 +269,28 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
       <a class="nl" href="#academia">Academia</a>
       <a class="nl" href="#especialista">El especialista</a>
       <button class="cart-btn" onclick="openCart()">Carrito <span class="cart-count" id="cartCount">0</span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
+
+<!-- MENÚ MÓVIL -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#cotizar">Cotizar</a>
+  <a href="#precios">Precios</a>
+  <a href="#academia">Academia</a>
+  <a href="#especialista">El especialista</a>
+</div>
+
+<!-- ========== VISTA: LANDING ========== -->
+<div id="view-home">
 
 <!-- HERO -->
 <header class="hero">
   <div class="hero-l">
     <div class="hero-kick"><span class="hanko"><span>英</span><span>雄</span></span> Filo Academia · Ciudad de México</div>
-    <h1>Afilamos y reparamos <em>cuchillos de cocina</em>.</h1>
+    <h1>Afilamos y reparamos <em>tus cuchillos</em>.</h1>
     <p>Japoneses, de marca prestigiada, o ese cuchillo que heredaste y no quieres confiarle a nadie. A mano, con piedras de agua. Lo recogemos y te lo devolvemos con filo.</p>
     <div class="hero-acts">
       <a href="#cotizar" class="btn">Cotizar mi servicio</a>
@@ -443,12 +473,38 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
   </div>
 </section>
 
-<!-- ACADEMIA -->
+<!-- SHOWROOM -->
+<section id="showroom">
+  <div class="wrap">
+    <div class="sec-label"><span class="jp">展示</span> Showroom</div>
+    <h2 class="sec">El taller.</h2>
+    <div class="show-grid">
+      <figure>
+        <img src="rack-mag.jpeg" alt="Cuchillos colgados en rack magnético">
+        <figcaption>Rack magnético · pared del taller</figcaption>
+      </figure>
+      <figure>
+        <img src="soporte-madera.jpeg" alt="Cuchillos en soporte de madera">
+        <figcaption>Soporte de madera · exhibición</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+</div><!-- /view-home -->
+
+<!-- ========== VISTA: ACADEMIA ========== -->
+<div id="view-academia" style="display:none">
 <section class="acad" id="academia">
   <div class="wrap">
+    <a href="#" class="back-link">← Volver al inicio</a>
     <div class="sec-label"><span class="jp">学院</span> Academia</div>
     <h2 class="sec">Aprende el arte del filo.</h2>
     <p class="sec-sub">Cursos presenciales de afilado japonés en nuestro taller de CDMX. Grupos pequeños; piedras y cuchillos de práctica incluidos.</p>
+    <figure class="acad-img">
+      <img src="piedra-filo.png" alt="Cuchillo japonés sobre piedra de agua">
+      <figcaption>Estación de afilado · piedra de agua</figcaption>
+    </figure>
     <div class="a-grid">
       <div class="a-card">
         <div class="a-num"> curso I</div>
@@ -474,24 +530,7 @@ footer{background:var(--sumi);color:var(--hai);padding:64px 24px 32px}
     </div>
   </div>
 </section>
-
-<!-- SHOWROOM -->
-<section id="showroom">
-  <div class="wrap">
-    <div class="sec-label"><span class="jp">展示</span> Showroom</div>
-    <h2 class="sec">El taller.</h2>
-    <div class="show-grid">
-      <figure>
-        <img src="rack-mag.jpeg" alt="Cuchillos colgados en rack magnético de roble">
-        <figcaption>Rack magnético · pared del taller</figcaption>
-      </figure>
-      <figure>
-        <img src="piedra-filo.png" alt="Cuchillo japonés sobre piedra de agua">
-        <figcaption>Estación de afilado · piedra de agua</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
+</div><!-- /view-academia -->
 
 <footer>
   <div class="f-in">
@@ -571,6 +610,28 @@ const state={
 };
 let cart=[];
 
+/* ---------- RUTER DE VISTAS (landing / academia) ---------- */
+function showView(name){
+  document.getElementById('view-home').style.display=(name==='home')?'block':'none';
+  document.getElementById('view-academia').style.display=(name==='academia')?'block':'none';
+}
+function route(){
+  const h=location.hash;
+  if(h==='#academia'){ showView('academia'); window.scrollTo(0,0); }
+  else{
+    showView('home');
+    if(h){ const el=document.querySelector(h); if(el) setTimeout(()=>el.scrollIntoView(),0); }
+    else window.scrollTo(0,0);
+  }
+}
+window.addEventListener('hashchange',route);
+
+/* ---------- MENÚ MÓVIL ---------- */
+document.getElementById('menuBtn').onclick=()=>document.getElementById('mobileMenu').classList.add('on');
+document.getElementById('mobileClose').onclick=()=>document.getElementById('mobileMenu').classList.remove('on');
+document.querySelectorAll('#mobileMenu a').forEach(a=>a.onclick=()=>document.getElementById('mobileMenu').classList.remove('on'));
+
+/* ---------- COTIZADOR ---------- */
 document.querySelectorAll('#mmOpts .opt').forEach(o=>o.onclick=()=>{
   document.querySelectorAll('#mmOpts .opt').forEach(x=>x.classList.remove('sel'));
   o.classList.add('sel'); state.mm={v:+o.dataset.v,n:o.dataset.n}; calc();
@@ -626,7 +687,9 @@ function pay(){
   document.getElementById('successView').style.display='block';
   cart=[];renderCart();
 }
-calc();renderCart();
+route();
+calc();
+renderCart();
 </script>
 </body>
 </html>
